@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "startNodemon": "nodemon ./src/index.js",
-    "startRender": "node /build/bundle.js",
+    "startRender": "node ./build/bundle.js",
     "start": "npm run startNodemon & webpack-dev-server --inline --hot",
     "build": "webpack --env NODE_ENV=production --config webpack.config.cjs",
     "startServer": "npm run build && node public/bundle.js",
