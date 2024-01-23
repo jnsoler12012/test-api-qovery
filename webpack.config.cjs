@@ -11,7 +11,7 @@ module.exports = (env) => {
         target: 'node',
         watch: env.NODE_ENV === 'development',
         output: {
-            path: path.resolve(__dirname, 'public/'),
+            path: path.resolve(__dirname, '/public/'),
             filename: 'bundle.js'
         },
 
@@ -38,7 +38,7 @@ module.exports = (env) => {
         ],
         //devserver
         devServer: {
-            contentBase: path.join(__dirname, '/public'),
+            contentBase: path.join(__dirname, '/public/'),
             watchContentBase: true,
             proxy: [
                 {
