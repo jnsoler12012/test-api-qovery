@@ -7,6 +7,8 @@ import dotenv from "dotenv"
 
 import { notFound, errorHandler } from './middleware.js';
 import api from './api/index.js';
+import dataBaseConnection from './dataBaseConnection.js';
+
 
 const app = express();
 
@@ -15,9 +17,11 @@ app.use(helmet());
 app.use(cors());
 app.use(json());
 
-app.get('/', (req, res) => {
+app.get('/', async (req, res) => {
+    const [result, data] = await dataBaseConnection.query('SELECT NOW()')
     res.json({
         message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+        other: result[0]?.now
     });
 });
 
@@ -25,6 +29,24 @@ app.use('/api/v1', api);
 
 app.use(notFound);
 app.use(errorHandler);
-dotenv.config()
+
+
+try {
+    
+    await dataBaseConnection
+        .authenticate()
+        .then(async () => {
+
+            const [result, data] = await dataBaseConnection.query('SELECT NOW()')
+            console.log(result);
+        })
+        .catch((err) => {
+            console.error(err);
+        })
+
+} catch (error) {
+    console.log(error);
+}
+
 
 export default app;

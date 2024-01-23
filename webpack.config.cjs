@@ -8,6 +8,7 @@ module.exports = (env) => {
     return {
         entry: './src/index.js',
         mode: env.NODE_ENV,
+        target: 'node',
         watch: env.NODE_ENV === 'development',
         output: {
             path: path.resolve(__dirname, 'public/'),
@@ -31,7 +32,9 @@ module.exports = (env) => {
         },
         externals: [nodeExternals()],
         plugins: [
-            new Dotenv(),
+            new Dotenv({
+                path: `/.env`
+            }),
             env.NODE_ENV === 'development' && new WebpackShellPlugin({
                 onBuildEnd: ['npm run build && npm run dev']
             }),
