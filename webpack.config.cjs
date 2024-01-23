@@ -8,11 +8,11 @@ module.exports = (env) => {
     return {
         entry: './src/index.js',
         mode: env.NODE_ENV,
-        target: 'node',
         watch: env.NODE_ENV === 'development',
         output: {
-            path: path.resolve(__dirname, '/public/'),
-            filename: 'bundle.js'
+            path: path.resolve(__dirname, 'public/'),
+            clean: true,
+            filename: 'bundle.cjs'
         },
 
         module: {
