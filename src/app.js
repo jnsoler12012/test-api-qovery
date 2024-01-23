@@ -37,7 +37,7 @@ try {
         .authenticate()
         .then(async () => {
             const [result, data] = await dataBaseConnection.query('SELECT NOW()')
-            console.log(result, process.env);
+            console.log(result);
         })
         .catch((err) => {
             console.error(err);

@@ -2,7 +2,7 @@ import { default as app } from './app.js';
 import dotenv from "dotenv"
 
 const port = process.env.PORT || 5000;
-
+dotenv.config()
 app.listen(port, () => {
     /* eslint-disable no-console */
     console.log(`Listening: http://localhost:${port}`);

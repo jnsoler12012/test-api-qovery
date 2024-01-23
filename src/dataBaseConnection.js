@@ -1,8 +1,10 @@
 import { Sequelize } from "sequelize";
-console.log(process.env, process.env.POSTGRE_URL);
-const URL = process.env.POSTGRE_URL || 'postgres://mainuser:8AQluCn0KKyEy7FSqXnCiyG1rEwn0nEd@dpg-cmni2nmn7f5s73ct39h0-a.oregon-postgres.render.com/ztechnology_db'
 
-const dataBaseConnection = new Sequelize('postgres://mainuser:8AQluCn0KKyEy7FSqXnCiyG1rEwn0nEd@dpg-cmni2nmn7f5s73ct39h0-a.oregon-postgres.render.com/ztechnology_db', {
+const URL = process.env.WEBPACK_ENVIRONMENT || 'postgres://mainuser:8AQluCn0KKyEy7FSqXnCiyG1rEwn0nEd@dpg-cmni2nmn7f5s73ct39h0-a.oregon-postgres.render.com/ztechnology_db';
+
+console.log(URL);
+
+const dataBaseConnection = new Sequelize(URL, {
     dialectOptions: {
         ssl: true,
         useUTC: true, // -->Add this line. for reading from database
