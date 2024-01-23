@@ -2,6 +2,8 @@ const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const WebpackShellPlugin = require('webpack-shell-plugin');
 const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
+
 
 module.exports = (env) => {
 
@@ -32,9 +34,7 @@ module.exports = (env) => {
         },
         externals: [nodeExternals()],
         plugins: [
-            new Dotenv({
-                path: `/.env`
-            }),
+            new webpack.DotenvPlugin({ path: './.env' }),
             env.NODE_ENV === 'development' && new WebpackShellPlugin({
                 onBuildEnd: ['npm run build && npm run dev']
             }),

@@ -36,9 +36,8 @@ try {
     await dataBaseConnection
         .authenticate()
         .then(async () => {
-
             const [result, data] = await dataBaseConnection.query('SELECT NOW()')
-            console.log(result);
+            console.log(result, process.env);
         })
         .catch((err) => {
             console.error(err);
