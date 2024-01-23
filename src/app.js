@@ -20,7 +20,7 @@ app.use(json());
 app.get('/', async (req, res) => {
     const [result, data] = await dataBaseConnection.query('SELECT NOW()')
     res.json({
-        message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+        message: 'Deberia cambiar carajo',
         other: result[0]?.now
     });
 });
