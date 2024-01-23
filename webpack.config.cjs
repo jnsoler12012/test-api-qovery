@@ -34,7 +34,9 @@ module.exports = (env) => {
         },
         externals: [nodeExternals()],
         plugins: [
-            new webpack.DotenvPlugin({ path: './.env' }),
+            new Dotenv({
+                path: '.env',
+            }),
             env.NODE_ENV === 'development' && new WebpackShellPlugin({
                 onBuildEnd: ['npm run build && npm run dev']
             }),
