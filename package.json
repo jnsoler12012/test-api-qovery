@@ -9,8 +9,7 @@
     "startRender": "node ./public/bundle.cjs",
     "start": "npm run startNodemon & webpack-dev-server --inline --hot",
     "build": "webpack --env NODE_ENV=production --config webpack.config.cjs",
-    "startServer": "npm run build && node ./public/bundle.cjs",
-    "vercel-build": "npm run build"
+    "startServer": "npm run build && node ./public/bundle.cjs"
   },
   "author": "",
   "license": "ISC",
